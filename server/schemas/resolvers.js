@@ -8,15 +8,14 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
-                    .populate('thoughts')
-                    .populate('friends');
+                    .populate('savedBooks')
                 return userData;
             }
             throw new AuthenticationError('Not logged in');
         },
 
-        getSingleUser: async (parent, { _id }) => {
-            const oneUser = User.findOne({ _id })
+        getSingleUser: async (parent, args) => {
+            const oneUser = User.findOne({ $or: [{ _id: user ? user._id : args.id }, { username: args.username }] })
                 .select('-__V -password')
                 .populate('savedBooks');
             if (!oneUser) {
@@ -35,8 +34,8 @@ const resolvers = {
             return { token, user };
         },
 
-        login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+        login: async (parent, args) => {
+            const user = await User.findOne({ $or: [{ username: args.username }, { email: args.email }] });
             if (!user) {
                 throw new AuthenticationError('Incorrect credentials');
             }
