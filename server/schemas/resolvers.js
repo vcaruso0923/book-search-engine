@@ -14,8 +14,8 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
 
-        getSingleUser: async (parent, args) => {
-            const oneUser = User.findOne({ $or: [{ _id: user ? user._id : args.id }, { username: args.username }] })
+        getSingleUser: async (parent, {username}) => {
+            const oneUser = User.findOne({ username })
                 .select('-__V -password')
                 .populate('savedBooks');
             if (!oneUser) {
@@ -34,8 +34,8 @@ const resolvers = {
             return { token, user };
         },
 
-        login: async (parent, args) => {
-            const user = await User.findOne({ $or: [{ username: args.username }, { email: args.email }] });
+        login: async (parent, {email}) => {
+            const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('Incorrect credentials');
             }
