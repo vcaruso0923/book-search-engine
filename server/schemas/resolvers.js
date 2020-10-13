@@ -13,16 +13,6 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-
-        getSingleUser: async (parent, {username}) => {
-            const oneUser = User.findOne({ username })
-                .select('-__V -password')
-                .populate('savedBooks');
-            if (!oneUser) {
-                return res.status(400).json({ message: 'Cannot find a user with this id!' });
-            }
-            return oneUser;
-        },
     },
     Mutation: {
         createUser: async (parent, args) => {
