@@ -3,6 +3,13 @@
 
 A React app using Apollo, GraphQL, Express.js. Uses the Google Books API to help you search for books and add them to your reading list.
 
+## Live Application
+
+https://cryptic-thicket-75948.herokuapp.com/
+
+## Screenshot
+![Book Search Engine](/demo.PNG)
+
 ## Table of Contents
 
 * [Installation](#installation)
@@ -11,9 +18,6 @@ A React app using Apollo, GraphQL, Express.js. Uses the Google Books API to help
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-
-## Screenshot
-![Book Search Engine](/demo.PNG)
 
 ## Installation
 
