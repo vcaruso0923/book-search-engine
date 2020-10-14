@@ -21,12 +21,12 @@ const typeDefs = gql`
     }
 
     type Book {
-        bookId: String
-        authors: [String]
-        description: String
-        title: String
-        image: String
-        link: String
+        bookId: String!
+        authors: [String]!
+        description: String!
+        title: String!
+        image: String!
+        link: String!
     }
 
     type Auth {
