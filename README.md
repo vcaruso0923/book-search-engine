@@ -1,4 +1,7 @@
 # Book Search Engine   
+
+**Known Issue: When you create a brand new account and add a book(s) for the first time, and then view your saved books, the book(s) will not appear. If you go back and save another book(s), and then return to your saved books, the book(s) you initially saved will appear, as well as the ones you saved on the second go. I'm unsure of the source of this issue, and am working on resolving it.**
+
 ## Description
 
 A React app using Apollo, GraphQL, Express.js. Uses the Google Books API to help you search for books and add them to your reading list.
